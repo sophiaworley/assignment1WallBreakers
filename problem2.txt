@@ -1,0 +1,22 @@
+Given a lower and upper number bound, output a list of every possible self dividing number, including the bounds if possible.
+Input: left = 1, right = 22
+Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]
+
+class Solution(object):
+    def selfDividingNumbers(self, left, right):
+        sdn = []
+        for num in range(left,right+1):
+            isSDN = True
+            numstr = str(num)
+            alreadyFalse = True;
+            for x in numstr:
+                if (int(x) == 0):
+                    isSDN = False;
+                elif (num % int(x) == 0):
+                    continue
+                else:
+                    isSDN = False
+                    alreadyFalse = False
+            if (isSDN == True & alreadyFalse == True):
+                sdn.append(num)
+        return sdn
